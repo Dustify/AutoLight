@@ -2,6 +2,7 @@
 #define VIEW_MENU_H
 
 #include "model.h"
+#include "viewSetTime.h"
 
 class ViewMenu {
 public:
@@ -49,8 +50,18 @@ static void loop() {
 	}
 
 	if (selectPressed()) {
-    VIEW = 0;
-  }
+		switch (selectedIndex) {
+		case 0:
+			ViewSetTime::init();
+			VIEW = 2;
+			break;
+		case 2:
+			VIEW = 0;
+			break;
+		}
+
+		selectedIndex = 0;
+	}
 
 	if (rightPressed()) {
 		selectedIndex++;

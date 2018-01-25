@@ -1,6 +1,7 @@
 #include "model.h"
 #include "viewHome.h"
 #include "viewMenu.h"
+#include "viewSetTime.h"
 
 void setup() {
 	pinMode(PIN_LEFT, INPUT_PULLUP);
@@ -22,8 +23,15 @@ void loop() {
 	display.setCursor(0, 0);
 
 	switch (VIEW) {
-	case 0: ViewHome::loop(); break;
-	case 1: ViewMenu::loop(); break;
+	case 0:
+		ViewHome::loop();
+		break;
+	case 1:
+		ViewMenu::loop();
+		break;
+	case 2:
+		ViewSetTime::loop();
+		break;
 	}
 
 	display.display();
