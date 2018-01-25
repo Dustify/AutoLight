@@ -13,13 +13,13 @@ void setup() {
 	rtc.Begin();
 
 	display.setTextSize(2);
-	display.setCursor(0, 0);
 }
 
 void loop() {
 	updateInputs();
 
 	display.clearDisplay();
+	display.setCursor(0, 0);
 
 	switch (VIEW) {
 	case 0: ViewHome::loop(); break;

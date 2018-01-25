@@ -28,16 +28,9 @@ static void loop() {
 	display.print("F");
 	display.println();
 
-	display.print(STATE_LEFT);
-	display.print(" ");
-	display.print(STATE_SELECT);
-	display.print(" ");
-	display.print(STATE_RIGHT);
-	display.println();
-
-  // if (selectPressed()) {
-  //   VIEW = 1;
-  // }
+  if (selectPressed()) {
+    VIEW = 1;
+  }
 }
 };
 
