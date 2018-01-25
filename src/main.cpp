@@ -32,6 +32,9 @@ void loop() {
 	case 2:
 		ViewSetTime::loop();
 		break;
+	case 3:
+		ViewSetDate::loop();
+		break;
 	}
 
 	display.display();

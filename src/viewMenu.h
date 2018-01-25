@@ -3,6 +3,7 @@
 
 #include "model.h"
 #include "viewSetTime.h"
+#include "viewSetDate.h"
 
 class ViewMenu {
 public:
@@ -54,6 +55,10 @@ static void loop() {
 		case 0:
 			ViewSetTime::init();
 			VIEW = 2;
+			break;
+		case 1:
+			ViewSetDate::init();
+			VIEW = 3;
 			break;
 		case 2:
 			VIEW = 0;
