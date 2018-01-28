@@ -7,7 +7,24 @@
 
 class ViewMenu {
 public:
+static uint8_t viewIndex;
 static int8_t selectedIndex;
+
+static void fixSelected() {
+	const uint8_t menuCount = 5;
+
+	if (selectedIndex < viewIndex || selectedIndex > (viewIndex + 2)) {
+		viewIndex = selectedIndex;
+	}
+
+	if (selectedIndex > menuCount) {
+		selectedIndex = 0;
+	}
+
+	if (selectedIndex < 0) {
+		selectedIndex = menuCount;
+	}
+}
 
 static void markSelected(uint8_t index) {
 	if (selectedIndex == index) {
@@ -18,33 +35,26 @@ static void markSelected(uint8_t index) {
 	display.print(" ");
 }
 
-static void fixSelected() {
-	if (selectedIndex > 2) {
-		selectedIndex = 0;
+static void printMenuOption(uint8_t index, const char *text) {
+	if (index < viewIndex || index > (viewIndex + 2)) {
 		return;
 	}
 
-	if (selectedIndex < 0) {
-		selectedIndex = 2;
-		return;
-	}
+	markSelected(index);
+	display.print(text);
+	display.println();
 }
 
 static void loop() {
 	display.print("Menu");
 	display.println();
 
-	markSelected(0);
-	display.print("Set time");
-	display.println();
-
-	markSelected(1);
-	display.print("Set date");
-	display.println();
-
-	markSelected(2);
-	display.print("Exit");
-	display.println();
+	printMenuOption(0, "Time");
+	printMenuOption(1, "Date");
+	printMenuOption(2, "Position");
+	printMenuOption(3, "Auto on");
+	printMenuOption(4, "Auto off");
+	printMenuOption(5, "Exit");
 
 	if (leftPressed()) {
 		selectedIndex--;
@@ -60,7 +70,7 @@ static void loop() {
 			ViewSetDate::init();
 			VIEW = 3;
 			break;
-		case 2:
+		case 5:
 			VIEW = 0;
 			break;
 		}
@@ -76,6 +86,7 @@ static void loop() {
 }
 };
 
+uint8_t ViewMenu::viewIndex;
 int8_t ViewMenu::selectedIndex;
 
 #endif
