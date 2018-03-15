@@ -6,26 +6,29 @@
 class ViewHome {
 public:
 static void loop() {
-	RtcDateTime now = rtc.GetDateTime();
-	RtcTemperature temperature = rtc.GetTemperature();
-
-	printWithLeading(now.Hour());
+	printWithLeading(HOUR);
 	display.print(":");
-	printWithLeading(now.Minute());
+	printWithLeading(MINUTE);
 	display.print(":");
-	printWithLeading(now.Second());
+	printWithLeading(SECOND);
 	display.println();
 
-	printWithLeading(now.Day());
+	printWithLeading(DAY);
 	display.print("/");
-	printWithLeading(now.Month());
+	printWithLeading(MONTH);
 	display.print("/");
-	display.print(now.Year());
+	display.print(YEAR);
 	display.println();
 
-	display.print(temperature.AsFloat() * 1.8 + 32);
-	display.print((char)248);
-	display.print("F");
+	// display.print(temperature.AsFloat() * 1.8 + 32);
+	// display.print((char)248);
+	// display.print("F");
+	// display.println();
+
+	display.print(SUNRISE);
+	display.println();
+
+	display.print(SUNSET);
 	display.println();
 
   if (selectPressed()) {

@@ -14,10 +14,9 @@ static int8_t second;
 
 static void init() {
 	selectedIndex = 0;
-	RtcDateTime now = rtc.GetDateTime();
-	hour = now.Hour();
-	minute = now.Minute();
-	second = now.Second();
+	hour = HOUR;
+	minute = MINUTE;
+	second = SECOND;
 }
 
 static void fixValues() {

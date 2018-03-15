@@ -14,10 +14,9 @@ static int16_t year;
 
 static void init() {
 	selectedIndex = 0;
-	RtcDateTime now = rtc.GetDateTime();
-	day = now.Day();
-	month = now.Month();
-	year = now.Year();
+	day = DAY;
+	month = MONTH;
+	year = YEAR;
 }
 
 static void fixValues() {
