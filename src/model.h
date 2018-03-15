@@ -130,7 +130,7 @@ void modelUpdate() {
 
 	TIME = HOUR + (MINUTE / 60);
 
-	byte nowArray[] = { SECOND, MINUTE, HOUR, DAY, MONTH, YEAR };
+	byte nowArray[] = { SECOND, MINUTE, HOUR, DAY, MONTH, YEAR - 2000 };
 
 	timeLord.SunRise(nowArray);
 	SR_MINUTE = nowArray[1];
