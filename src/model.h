@@ -51,6 +51,7 @@ uint8_t SECOND;
 uint8_t DAY;
 uint8_t MONTH;
 uint16_t YEAR;
+uint8_t YEAR_SHORT;
 
 float TIME;
 
@@ -61,6 +62,10 @@ float SUNRISE;
 float SS_HOUR;
 float SS_MINUTE;
 float SUNSET;
+
+uint8_t SUNRISE_NEXT = 0;
+
+float TEMPERATURE;
 
 void printWithLeading(uint16_t value) {
 	if (value < 10) {
@@ -119,7 +124,6 @@ void modelUpdate() {
 	STATE_RIGHT = STATE_RIGHT_NEW;
 
 	RtcDateTime now = rtc.GetDateTime();
-	// RtcTemperature temperature = rtc.GetTemperature();
 
 	HOUR = now.Hour();
 	MINUTE = now.Minute();
@@ -127,10 +131,11 @@ void modelUpdate() {
 	DAY = now.Day();
 	MONTH = now.Month();
 	YEAR = now.Year();
+	YEAR_SHORT = YEAR - 2000;
 
 	TIME = HOUR + (MINUTE / 60);
 
-	byte nowArray[] = { SECOND, MINUTE, HOUR, DAY, MONTH, YEAR - 2000 };
+	byte nowArray[] = { SECOND, MINUTE, HOUR, DAY, MONTH, YEAR_SHORT };
 
 	timeLord.SunRise(nowArray);
 	SR_MINUTE = nowArray[1];
@@ -143,6 +148,15 @@ void modelUpdate() {
 	SS_HOUR = nowArray[2];
 
 	SUNSET = SS_HOUR + (SS_MINUTE / 60);
+
+	SUNRISE_NEXT = TIME < SUNRISE ? 1 : 0;
+
+	RtcTemperature temperature = rtc.GetTemperature();
+	TEMPERATURE = temperature.AsFloat();
+
+	if (!TEMP_IN_CELCIUS) {
+		TEMPERATURE = TEMPERATURE * 1.8 + 32;
+	}
 }
 
 #endif

@@ -10,14 +10,16 @@
 #define PIN_SELECT  3
 #define PIN_RIGHT   4
 
-const int   TIMEZONE  = 0;
+#define TIMEZONE 0
 
 // LESSINGHAM
-// const float LONGITUDE = 52.79;
-// const float LATITUDE  = 1.54;
+// #define LONGITUDE = 52.79;
+// #define LATITUDE  = 1.54;
 
 // HUNGERFORD
-const float LONGITUDE = 51.406265;
-const float LATITUDE  = -1.512680;
+#define LONGITUDE 51.406265
+#define LATITUDE  -1.512680
+
+#define TEMP_IN_CELCIUS false
 
 #endif

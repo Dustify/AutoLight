@@ -11,7 +11,7 @@ static uint8_t viewIndex;
 static int8_t selectedIndex;
 
 static void fixSelected() {
-	const uint8_t menuCount = 5;
+	const uint8_t menuCount = 2;
 
 	if (selectedIndex < viewIndex || selectedIndex > (viewIndex + 2)) {
 		viewIndex = selectedIndex;
@@ -51,10 +51,10 @@ static void loop() {
 
 	printMenuOption(0, "Time");
 	printMenuOption(1, "Date");
-	printMenuOption(2, "Position");
-	printMenuOption(3, "Auto on");
-	printMenuOption(4, "Auto off");
-	printMenuOption(5, "Exit");
+	// printMenuOption(2, "Position");
+	// printMenuOption(3, "Auto on");
+	// printMenuOption(4, "Auto off");
+	printMenuOption(2, "Exit");
 
 	if (leftPressed()) {
 		selectedIndex--;

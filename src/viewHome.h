@@ -20,15 +20,23 @@ static void loop() {
 	display.print(YEAR);
 	display.println();
 
-	// display.print(temperature.AsFloat() * 1.8 + 32);
-	// display.print((char)248);
-	// display.print("F");
-	// display.println();
+	if (SUNRISE_NEXT == 1) {
+		display.print("SR ");
+		printWithLeading(SR_HOUR);
+		display.print(":");
+		printWithLeading(SR_MINUTE);
+		display.println();
+	} else {
+		display.print("SS ");
+		printWithLeading(SS_HOUR);
+		display.print(":");
+		printWithLeading(SS_MINUTE);
+		display.println();
+	}
 
-	display.print(SUNRISE);
-	display.println();
-
-	display.print(SUNSET);
+	display.print(TEMPERATURE);
+	display.print((char)248);
+	display.print(TEMP_IN_CELCIUS ? "C" : "F");
 	display.println();
 
   if (selectPressed()) {
