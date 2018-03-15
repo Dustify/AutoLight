@@ -5,6 +5,7 @@
 
 // Hello, dad!
 // TODO list:
+// auto timeout
 // daylight savings?
 // override
 // auto on / off
