@@ -4,6 +4,11 @@
 #include "viewSetTime.h"
 
 // Hello, dad!
+// TODO list:
+// daylight savings?
+// override
+// auto on / off
+// set off time
 
 void setup() {
 	modelInit();

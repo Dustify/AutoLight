@@ -133,7 +133,7 @@ void modelUpdate() {
 	YEAR = now.Year();
 	YEAR_SHORT = YEAR - 2000;
 
-	TIME = HOUR + (MINUTE / 60);
+	TIME = HOUR + ((float)MINUTE / 60);
 
 	byte nowArray[] = { SECOND, MINUTE, HOUR, DAY, MONTH, YEAR_SHORT };
 
@@ -149,7 +149,7 @@ void modelUpdate() {
 
 	SUNSET = SS_HOUR + (SS_MINUTE / 60);
 
-	SUNRISE_NEXT = TIME < SUNRISE ? 1 : 0;
+	SUNRISE_NEXT = TIME < SUNRISE || TIME > SUNSET ? 1 : 0;
 
 	RtcTemperature temperature = rtc.GetTemperature();
 	TEMPERATURE = temperature.AsFloat();

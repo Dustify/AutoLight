@@ -20,6 +20,6 @@
 #define LONGITUDE 51.406265
 #define LATITUDE  -1.512680
 
-#define TEMP_IN_CELCIUS false
+#define TEMP_IN_CELCIUS 1
 
 #endif
