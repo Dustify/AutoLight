@@ -3,6 +3,8 @@
 #include "viewMenu.h"
 #include "viewSetTime.h"
 
+// Hello, dad!
+
 void setup() {
 	modelInit();
 }
