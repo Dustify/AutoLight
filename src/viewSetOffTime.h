@@ -36,8 +36,8 @@ static void fixValues() {
 }
 
 static void loop() {
-	display.println("Set ");
-	display.println(" off time");
+	display.println("Set off");
+	display.println("time");
 
 	printWithLeading(hour);
 	display.print(":");
