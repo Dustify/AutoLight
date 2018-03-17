@@ -7,8 +7,6 @@
 // Hello, dad!
 // TODO list:
 // daylight savings?
-// override
-// auto on / off
 
 void setup() {
 	modelInit();
