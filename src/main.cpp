@@ -2,6 +2,7 @@
 #include "viewHome.h"
 #include "viewMenu.h"
 #include "viewSetTime.h"
+#include "viewSetOffTime.h"
 
 // Hello, dad!
 // TODO list:
@@ -33,6 +34,9 @@ void loop() {
 		break;
 	case 3:
 		ViewSetDate::loop();
+		break;
+	case 4:
+		ViewSetOffTime::loop();
 		break;
 	}
 

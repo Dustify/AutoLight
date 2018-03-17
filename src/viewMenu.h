@@ -4,6 +4,7 @@
 #include "model.h"
 #include "viewSetTime.h"
 #include "viewSetDate.h"
+#include "viewSetOffTime.h"
 
 class ViewMenu {
 public:
@@ -11,7 +12,7 @@ static uint8_t viewIndex;
 static int8_t selectedIndex;
 
 static void fixSelected() {
-	const uint8_t menuCount = 2;
+	const uint8_t menuCount = 3;
 
 	if (selectedIndex < viewIndex || selectedIndex > (viewIndex + 2)) {
 		viewIndex = selectedIndex;
@@ -51,10 +52,10 @@ static void loop() {
 
 	printMenuOption(0, "Time");
 	printMenuOption(1, "Date");
-	// printMenuOption(2, "Position");
+	printMenuOption(2, "Off Time");
 	// printMenuOption(3, "Auto on");
 	// printMenuOption(4, "Auto off");
-	printMenuOption(2, "Exit");
+	printMenuOption(3, "Exit");
 
 	if (leftPressed()) {
 		selectedIndex--;
@@ -69,6 +70,10 @@ static void loop() {
 		case 1:
 			ViewSetDate::init();
 			VIEW = 3;
+			break;
+		case 2:
+			ViewSetOffTime::init();
+			VIEW = 4;
 			break;
 		case 5:
 			VIEW = 0;

@@ -7,6 +7,7 @@
 #include <Adafruit_SSD1306.h>
 #include <RtcDS3231.h>
 #include <TimeLord.h>
+#include <EEPROM.h>
 
 Adafruit_SSD1306 display(
 	PIN_OLED_MOSI,
@@ -18,22 +19,6 @@ Adafruit_SSD1306 display(
 RtcDS3231<TwoWire> rtc(Wire);
 
 TimeLord timeLord;
-
-void modelInit() {
-	pinMode(PIN_LEFT, INPUT_PULLUP);
-	pinMode(PIN_SELECT, INPUT_PULLUP);
-	pinMode(PIN_RIGHT, INPUT_PULLUP);
-
-	display.begin(SSD1306_SWITCHCAPVCC);
-	display.setTextColor(WHITE);
-
-	rtc.Begin();
-
-	display.setTextSize(2);
-
-	timeLord.TimeZone(TIMEZONE * 60);
-	timeLord.Position(LONGITUDE, LATITUDE);
-}
 
 uint8_t VIEW;
 
@@ -66,6 +51,28 @@ float SUNSET;
 uint8_t SUNRISE_NEXT = 0;
 
 float TEMPERATURE;
+
+uint8_t OFF_HOUR;
+uint8_t OFF_MINUTE;
+
+void modelInit() {
+	pinMode(PIN_LEFT, INPUT_PULLUP);
+	pinMode(PIN_SELECT, INPUT_PULLUP);
+	pinMode(PIN_RIGHT, INPUT_PULLUP);
+
+	display.begin(SSD1306_SWITCHCAPVCC);
+	display.setTextColor(WHITE);
+
+	rtc.Begin();
+
+	display.setTextSize(2);
+
+	timeLord.TimeZone(TIMEZONE * 60);
+	timeLord.Position(LONGITUDE, LATITUDE);
+
+	OFF_HOUR = EEPROM.read(0);
+	OFF_MINUTE = EEPROM.read(1);
+}
 
 void printWithLeading(uint16_t value) {
 	if (value < 10) {
