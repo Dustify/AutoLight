@@ -42,19 +42,23 @@ static void loop() {
 	display.print(YEAR);
 	display.println();
 
-	if (SUNRISE_NEXT == 1) {
-		display.print("SR ");
-		printWithLeading(SR_HOUR);
-		display.print(":");
-		printWithLeading(SR_MINUTE);
-		display.println();
+	if (OVERRIDE) {
+		display.print("Override");
 	} else {
-		display.print("SS ");
-		printWithLeading(SS_HOUR);
-		display.print(":");
-		printWithLeading(SS_MINUTE);
-		display.println();
+		display.print(STATE ? "On " : "Off ");
+
+		if (STATE) {
+			printWithLeading(OFF_HOUR);
+			display.print(":");
+			printWithLeading(OFF_MINUTE);
+		} else {
+			printWithLeading(SS_HOUR);
+			display.print(":");
+			printWithLeading(SS_MINUTE);
+		}
 	}
+
+	display.println();
 
 	display.print(TEMPERATURE);
 	display.print((char)248);

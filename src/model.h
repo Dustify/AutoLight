@@ -40,12 +40,12 @@ uint8_t YEAR_SHORT;
 
 float TIME;
 
-float SR_HOUR;
-float SR_MINUTE;
+uint8_t SR_HOUR;
+uint8_t SR_MINUTE;
 float SUNRISE;
 
-float SS_HOUR;
-float SS_MINUTE;
+uint8_t SS_HOUR;
+uint8_t SS_MINUTE;
 float SUNSET;
 
 uint8_t SUNRISE_NEXT = 0;
@@ -54,6 +54,11 @@ float TEMPERATURE;
 
 uint8_t OFF_HOUR;
 uint8_t OFF_MINUTE;
+
+float OFF_TIME;
+
+bool STATE;
+bool OVERRIDE;
 
 void modelInit() {
 	pinMode(PIN_LEFT, INPUT_PULLUP);
@@ -148,13 +153,13 @@ void modelUpdate() {
 	SR_MINUTE = nowArray[1];
 	SR_HOUR = nowArray[2];
 
-	SUNRISE = SR_HOUR + (SR_MINUTE / 60);
+	SUNRISE = SR_HOUR + ((float)SR_MINUTE / 60);
 
 	timeLord.SunSet(nowArray);
 	SS_MINUTE = nowArray[1];
 	SS_HOUR = nowArray[2];
 
-	SUNSET = SS_HOUR + (SS_MINUTE / 60);
+	SUNSET = SS_HOUR + ((float)SS_MINUTE / 60);
 
 	SUNRISE_NEXT = TIME < SUNRISE || TIME > SUNSET ? 1 : 0;
 
@@ -164,6 +169,10 @@ void modelUpdate() {
 	if (!TEMP_IN_CELCIUS) {
 		TEMPERATURE = TEMPERATURE * 1.8 + 32;
 	}
+
+	OFF_TIME = OFF_HOUR + ((float)OFF_MINUTE / 60);
+
+	STATE = TIME >= SUNSET && TIME < OFF_TIME;
 }
 
 #endif
