@@ -65,6 +65,8 @@ void modelInit() {
 	pinMode(PIN_SELECT, INPUT_PULLUP);
 	pinMode(PIN_RIGHT, INPUT_PULLUP);
 
+	pinMode(PIN_OUTPUT, OUTPUT);
+
 	display.begin(SSD1306_SWITCHCAPVCC);
 	display.setTextColor(WHITE);
 
@@ -173,6 +175,8 @@ void modelUpdate() {
 	OFF_TIME = OFF_HOUR + ((float)OFF_MINUTE / 60);
 
 	STATE = TIME >= SUNSET && TIME < OFF_TIME;
+
+	digitalWrite(PIN_OUTPUT, OVERRIDE || STATE ? HIGH : LOW);
 }
 
 #endif

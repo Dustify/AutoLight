@@ -17,6 +17,11 @@ static void loop() {
 		timeoutStart = now;
 	}
 
+	if (leftPressed() || rightPressed()) {
+		OVERRIDE = !OVERRIDE;
+		timeoutStart = now;
+	}
+
 	bool timedOut = (now - timeoutStart) > HOME_TIMEOUT * 1e3;
 
 	if (timedOut) {

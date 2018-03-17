@@ -4,11 +4,13 @@
 #define PIN_OLED_MOSI  9
 #define PIN_OLED_CLK   10
 #define PIN_OLED_DC    11
-#define PIN_OLED_RESET 13
+#define PIN_OLED_RESET 8
 
 #define PIN_LEFT    2
 #define PIN_SELECT  3
 #define PIN_RIGHT   4
+
+#define PIN_OUTPUT 13
 
 #define TIMEZONE 0
 
