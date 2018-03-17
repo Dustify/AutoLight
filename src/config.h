@@ -22,4 +22,6 @@
 
 #define TEMP_IN_CELCIUS 1
 
+#define HOME_TIMEOUT 30
+
 #endif

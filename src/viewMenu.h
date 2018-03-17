@@ -53,8 +53,6 @@ static void loop() {
 	printMenuOption(0, "Time");
 	printMenuOption(1, "Date");
 	printMenuOption(2, "Off Time");
-	// printMenuOption(3, "Auto on");
-	// printMenuOption(4, "Auto off");
 	printMenuOption(3, "Exit");
 
 	if (leftPressed()) {
@@ -75,7 +73,7 @@ static void loop() {
 			ViewSetOffTime::init();
 			VIEW = 4;
 			break;
-		case 5:
+		case 3:
 			VIEW = 0;
 			break;
 		}
