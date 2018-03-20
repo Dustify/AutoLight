@@ -15,8 +15,8 @@
 #define TIMEZONE 0
 
 // LESSINGHAM
-// #define LONGITUDE = 52.79;
-// #define LATITUDE  = 1.54;
+// #define LONGITUDE 52.79
+// #define LATITUDE  1.54
 
 // HUNGERFORD
 #define LONGITUDE 51.406265

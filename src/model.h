@@ -165,7 +165,7 @@ void modelUpdate() {
 
 	if (TIME > SUNSET) {
 		nowArray[3]++;
-		
+
 		timeLord.SunSet(nowArray);
 		SS_MINUTE = nowArray[1];
 		SS_HOUR = nowArray[2];
