@@ -5,8 +5,6 @@
 #include "viewSetOffTime.h"
 
 // Hello, dad!
-// TODO list:
-// daylight savings?
 
 void setup() {
 	modelInit();

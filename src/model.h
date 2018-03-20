@@ -163,6 +163,16 @@ void modelUpdate() {
 
 	SUNSET = SS_HOUR + ((float)SS_MINUTE / 60);
 
+	if (TIME > SUNSET) {
+		nowArray[3]++;
+		
+		timeLord.SunSet(nowArray);
+		SS_MINUTE = nowArray[1];
+		SS_HOUR = nowArray[2];
+
+		SUNSET = SS_HOUR + ((float)SS_MINUTE / 60);
+	}
+
 	SUNRISE_NEXT = TIME < SUNRISE || TIME > SUNSET ? 1 : 0;
 
 	RtcTemperature temperature = rtc.GetTemperature();
