@@ -174,7 +174,11 @@ void modelUpdate() {
 
 	OFF_TIME = OFF_HOUR + ((float)OFF_MINUTE / 60);
 
-	STATE = TIME >= SUNSET && TIME < OFF_TIME;
+	if (OFF_TIME > SUNSET) {
+		STATE = TIME >= SUNSET && TIME < OFF_TIME;
+	} else {
+		STATE = TIME < SUNSET && TIME < OFF_TIME;
+	}
 
 	digitalWrite(PIN_OUTPUT, OVERRIDE || STATE ? HIGH : LOW);
 }
